@@ -65,6 +65,7 @@ public class GlobalExceptionHandler {
         if (ex.getCause() != null) {
             error.setCause(ex.getCause().getMessage());
         }
+        System.out.println(ex);
         return error;
     }
 

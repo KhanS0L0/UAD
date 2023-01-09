@@ -17,6 +17,10 @@ public class UadApplication {
 
 
     public static void main(String[] args) {
+        var properties = System.getProperties();
+        System.out.println(properties.getProperty("aws.secretAccessKey"));
+        System.out.println(properties.getProperty("aws.accessKeyId"));
+        System.out.println(properties.getProperty("aws.accessKeyId"));
         SpringApplication.run(UadApplication.class, args);
     }
 
