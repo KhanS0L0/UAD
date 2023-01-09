@@ -1,18 +1,46 @@
+#----------------------------COMMON profile---------------------------------------
 spring:
   application:
     name: unified-account-domain
+  flyway:
+    locations:
+      - classpath:db/migrations/ddl
+      - classpath:db/migrations/dml
   datasource:
-    url: jdbc:tc:postgresql:12:///test
-    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:postgresql://rc1b-sfrh0pab9118pxqm.mdb.yandexcloud.net:6432/cloud-db
+    driver-class-name: org.postgresql.Driver
+    username: test_user
+    password: test_user
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 25MB
+      max-request-size: 25MB
+
+yandex:
+  bucket:
+    name: uad-cloud-files
 
 logging:
   level:
     org.springframework.security: DEBUG
 
 server:
-  port: 8089
+  port: 8080
   shutdown: graceful
   servlet:
     context-path: /
+---
+#----------------------------LOCALHOST profile---------------------------------------
+
+spring:
+  config:
+    activate:
+      on-profile: localhost
+  datasource:
+    url: jdbc:tc:postgresql:12:///test
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver

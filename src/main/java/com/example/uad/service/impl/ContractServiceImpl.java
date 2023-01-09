@@ -1,4 +1,4 @@
-package com.example.uad.service;
+package com.example.uad.service.impl;
 
 import com.example.uad.domain.ContractAttribute;
 import com.example.uad.domain.Contract;
@@ -8,6 +8,7 @@ import com.example.uad.model.ContractDto;
 import com.example.uad.model.AttributeDto;
 import com.example.uad.repository.ContractAttributeRepository;
 import com.example.uad.repository.ContractRepository;
+import com.example.uad.service.ContractService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ContractServiceImpl implements ContractService{
+public class ContractServiceImpl implements ContractService {
 
     private final ContractRepository contractRepository;
     private final ContractAttributeRepository contractAttributeRepository;
@@ -57,7 +58,7 @@ public class ContractServiceImpl implements ContractService{
 
     @Override
     @Transactional
-    public void addSubcontractAttribute(Long contractId, Long attributeId, AttributeDto attributeDto) {
+    public void addSubAttribute(Long contractId, Long attributeId, AttributeDto attributeDto) {
         var contract = contractRepository.findById(contractId)
                 .orElseThrow(ErrorDescription.CONTRACT_NOT_FOUND::exception);
 

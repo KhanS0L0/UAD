@@ -1,4 +1,4 @@
-package com.example.uad.model;
+package com.example.uad.domain;
 
 public enum AttributeType {
     PHONE,
